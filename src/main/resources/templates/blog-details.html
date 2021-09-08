@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Блог сайта</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>Блог сайта</h1>
+<div th:each="el : ${post}">
+    <h1 th:text="${el.title}"/>
+    <p th:text="${el.full_text}"/>
+    <p><b>Просмотры: </b><span th:text="${el.views}"/></p>
+    <a th:href="'/blog/' + ${el.id} + '/edit'">Редактировать</a>
+    <form th:action="'/blog/' + ${el.id} + '/remove'" method="post">
+        <button>Удалить</button>
+    </form>
+</div>
+</br>
+<a href="/blog/add">Добавить статью</a>
+</body>
+</html>
